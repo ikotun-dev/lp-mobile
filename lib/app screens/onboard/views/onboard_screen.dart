@@ -71,7 +71,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               const SizedBox(
                 height: 20,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   BaseText(
