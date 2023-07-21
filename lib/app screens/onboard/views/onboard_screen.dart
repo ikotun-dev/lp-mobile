@@ -85,7 +85,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
               const SizedBox(
-                height: 6s0,
+                height: 60,
               ),
               Row(
                 mainAxisSize: MainAxisSize.max,
