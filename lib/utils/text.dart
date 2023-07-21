@@ -26,11 +26,11 @@ class BaseText extends StatelessWidget {
       textAlign: alignText ?? TextAlign.start,
       overflow: TextOverflow.fade,
       style: GoogleFonts.inter(
-            color: color,
-            fontWeight: weight,
-            fontSize: size,
-            fontStyle: fontStyle,
-          ),
+        color: color,
+        fontWeight: weight,
+        fontSize: size,
+        fontStyle: fontStyle,
+      ),
     );
   }
 }

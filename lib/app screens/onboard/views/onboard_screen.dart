@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:living_pro/utils/colors.dart';
 import 'package:living_pro/utils/text.dart';
+
+import '../models/onboard_model.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -10,6 +13,7 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,14 +41,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               Center(
                 child: Container(
-                  height: 250,
-                  width: 250,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/onboard1.png"),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
+                  height: 300,
+                  width: 300,
+                  child: Image.asset(
+                      'assets/${onboardAssets[index].imagePath}.png'),
                 ),
               ),
               Row(
@@ -63,26 +63,109 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               const SizedBox(
                 height: 20,
               ),
-              const BaseText(
-                text: "Find Your Roommate",
+              BaseText(
+                text: onboardAssets[index].header,
+                alignText: TextAlign.center,
                 weight: FontWeight.w600,
                 size: 18,
               ),
               const SizedBox(
                 height: 20,
               ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    BaseText(
+                      text: onboardAssets[index].description,
+                      alignText: TextAlign.center,
+                      size: 12,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 6s0,
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  BaseText(
-                      text:
-                          "Find like-minded individuals to interact with and find the\n roommate you've been looking for or needing.", size: 12,),
+                  for (int i = 0; i < onboardAssets.length; i++)
+                    i == index
+                        ? OnboardingScreen(true)
+                        : OnboardingScreen(false)
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Skip",
+                      style: GoogleFonts.inter(
+                        textStyle: TextStyle(
+                          decoration: TextDecoration.underline,
+                          decorationColor: AppColor.primary1,
+                          color: AppColor.primary1,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ),
+                  MaterialButton(
+                    height: 35,
+                    minWidth: 180,
+                    onPressed: () {
+                      if (index == 2) {
+                        Navigator.pushReplacementNamed(context, '/login');
+                      } else {
+                        setState(() => index++);
+                      }
+                    },
+                    color: AppColor.primary1,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            index == 2 ? 'Get Started' : "Next",
+                            style: GoogleFonts.poppins(
+                                textStyle: const TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(0XFFFFFFFF),
+                                    fontSize: 16)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               )
             ],
           ),
         ),
       ),
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  Widget OnboardingScreen(bool isActive) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 100),
+      height: 5,
+      width: 20,
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      decoration: BoxDecoration(
+          color: isActive ? AppColor.primary1 : const Color(0XFFEDEDED),
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.circular(10)),
     );
   }
 }
