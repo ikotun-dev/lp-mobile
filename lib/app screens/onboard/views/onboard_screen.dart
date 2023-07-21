@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:living_pro/app%20screens/authentication/login_page.dart';
 import 'package:living_pro/utils/colors.dart';
 import 'package:living_pro/utils/text.dart';
 
@@ -40,7 +41,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 height: 20,
               ),
               Center(
-                child: Container(
+                child: SizedBox(
                   height: 300,
                   width: 300,
                   child: Image.asset(
@@ -79,6 +80,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     BaseText(
                       text: onboardAssets[index].description,
                       alignText: TextAlign.center,
+                      color: Colors.black,
+                      weight: FontWeight.w500,
                       size: 12,
                     ),
                   ],
@@ -104,7 +107,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() => index = 2);
+                    },
                     child: Text(
                       "Skip",
                       style: GoogleFonts.inter(
@@ -122,7 +127,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     minWidth: 180,
                     onPressed: () {
                       if (index == 2) {
-                        Navigator.pushReplacementNamed(context, '/login');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const LoginPage()));
                       } else {
                         setState(() => index++);
                       }
