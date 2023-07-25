@@ -1,20 +1,20 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:living_pro/app%20screens/authentication/login_page.dart';
+import 'package:living_pro/views/authentication/signup_page.dart';
+import 'package:living_pro/views/old%20users/home/homepage.dart';
+import 'package:living_pro/utils/colors.dart';
+import 'package:living_pro/utils/text.dart';
 
-import '../../utils/colors.dart';
 import '../../utils/custom_textfield.dart';
-import '../../utils/text.dart';
 
-class SignupPage extends StatefulWidget {
-  const SignupPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
-  bool _isChecked = false;
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,26 +40,13 @@ class _SignupPageState extends State<SignupPage> {
                 const BaseText(
                   text:
                       "Kindly fill in these details to log in and find what you need",
-                  size: 16,
+                  size: 12,
                 ),
                 const SizedBox(
-                  height: 70,
-                ),
-                const SizedBox(
-                  height: 10,
+                  height: 80,
                 ),
                 const CustomTextField(
-                  hint: 'Enter your Fullname',
-                  keyboardType: TextInputType.emailAddress,
-                  // onChanged: (v) {
-                  //   // email.value = v.trim();
-                  // },
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const CustomTextField(
-                  hint: 'Enter your Email address',
+                  hint: 'Enter your Email Address',
                   keyboardType: TextInputType.emailAddress,
                   // onChanged: (v) {
                   //   // email.value = v.trim();
@@ -74,27 +61,13 @@ class _SignupPageState extends State<SignupPage> {
                   keyboardType: TextInputType.emailAddress,
                 ),
                 const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    BaseText(
-                      text: 'Remember me',
-                      size: 12,
-                      color: AppColor.primary1,
-                    ),
-                    Checkbox(
-                      value: _isChecked,
-                      activeColor: AppColor.primary1,
-                      checkColor: Colors.white,
-                      side: BorderSide(color: AppColor.txt2),
-                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      onChanged: (bool? newValue) {
-                        setState(() {
-                          _isChecked = newValue ?? false;
-                        });
-                      },
-                    )
-                  ],
+                GestureDetector(
+                  onTap: () {},
+                  child: BaseText(
+                    text: 'Forgot Password?',
+                    size: 12,
+                    color: AppColor.primary1,
+                  ),
                 ),
                 const SizedBox(
                   height: 50,
@@ -102,12 +75,19 @@ class _SignupPageState extends State<SignupPage> {
                 Center(
                   child: MaterialButton(
                     minWidth: 200,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const HomePageScreen(),
+                        ),
+                      );
+                    },
                     color: AppColor.primary1,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     child: BaseText(
-                      text: "Create Account",
+                      text: "Log in",
                       color: AppColor.bg,
                       weight: FontWeight.bold,
                     ),
@@ -118,7 +98,7 @@ class _SignupPageState extends State<SignupPage> {
                 ),
                 const Center(
                   child: BaseText(
-                    text: "You can create an account with",
+                    text: "You can log in with",
                     weight: FontWeight.w500,
                   ),
                 ),
@@ -170,17 +150,17 @@ class _SignupPageState extends State<SignupPage> {
                 Center(
                   child: RichText(
                     text: TextSpan(
-                      text: "Not new here? Please ",
+                      text: "New here? Please ",
                       style: const TextStyle(color: Colors.black),
                       children: [
                         TextSpan(
-                          text: 'Log in.',
+                          text: 'Create Account',
                           style: const TextStyle(color: Colors.blue),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (_) => const LoginPage(),
+                                    builder: (_) => const SignupPage(),
                                   ),
                                 ),
                         )

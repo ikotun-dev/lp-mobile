@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:living_pro/app%20screens/authentication/login_page.dart';
+import 'package:living_pro/views/authentication/login_page.dart';
 import 'package:living_pro/utils/colors.dart';
 import 'package:living_pro/utils/text.dart';
 
