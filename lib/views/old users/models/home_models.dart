@@ -8,7 +8,7 @@ class HomeModels {
   HomeModels({
     required this.imagePaths,
     required this.description,
-    required this.name,
+    required this.name ,
     required this.location,
     required this.time,
   });

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:living_pro/views/splashscreen/splashscreen.dart';
+
+import 'views/splashscreen/splashscreen.dart';
+
+
 
 void main() {
   runApp(const MyApp());

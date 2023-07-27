@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:living_pro/views/authentication/signup_page.dart';
-import 'package:living_pro/views/old%20users/home/homepage.dart';
+import 'package:living_pro/views/old%20users/home/navigation.dart';
 import 'package:living_pro/utils/colors.dart';
 import 'package:living_pro/utils/text.dart';
 
@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => const HomePageScreen(),
+                          builder: (_) => const HomePage(),
                         ),
                       );
                     },
