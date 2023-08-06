@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'colors.dart';
+import '../utils/colors.dart';
 
 class CustomTextField extends StatefulWidget {
   final String? hint;
@@ -19,7 +19,7 @@ class CustomTextField extends StatefulWidget {
   final TextInputAction textInputAction;
   final Border? border;
   final Color? backgroundColor;
-
+  final Icon? prefixIcon;
   final String? prefixText;
 
   const CustomTextField({
@@ -40,6 +40,7 @@ class CustomTextField extends StatefulWidget {
     this.border,
     this.backgroundColor,
     this.prefixText,
+    this.prefixIcon,
   }) : super(key: key);
 
   @override
@@ -68,13 +69,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
           vertical: 2,
         ),
         decoration: BoxDecoration(
-          color: AppColor.bg,
+          color: AppColor.txt3,
           border: widget.border ??
               Border.all(
-                color: const Color(0XFFBDBDBD),
+                color: const Color(0xffE9E9F8),
                 width: 1,
               ),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(6),
         ),
         child: Row(
           children: [
@@ -92,17 +93,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 inputFormatters: widget.inputFormatters,
                 maxLines: widget.obscureText ? 1 : (widget.lines),
                 minLines: widget.obscureText ? 1 : (widget.lines),
+                
                 style: const TextStyle(
                   fontWeight: FontWeight.w600,
                   color: Colors.black,
                   fontSize: 14,
                 ),
                 decoration: InputDecoration(
+                  prefix: const Icon(Icons.search_rounded),
                   prefixText: widget.prefixText,
-                  contentPadding: const EdgeInsets.all(20.0),
-                  prefixStyle: const TextStyle(
+                  prefixStyle: TextStyle(
                     fontWeight: FontWeight.w600,
-                    color: Colors.grey,
+                    color: AppColor.primary1,
                     fontSize: 14,
                   ),
                   border: InputBorder.none,
